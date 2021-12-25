@@ -1,0 +1,14 @@
+
+.sign{
+  font-weight: bold;
+  color:rgb(182, 226, 230);
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+} 
+
+.sign:hover{
+  letter-spacing: 2px;
+  color: whitesmoke;
+  cursor: pointer;
+}

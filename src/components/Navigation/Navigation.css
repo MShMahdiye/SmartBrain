@@ -1,5 +1,5 @@
 
-.sign{
+.signin{
   font-weight: bold;
   color:rgb(182, 226, 230);
   display: flex;
@@ -7,7 +7,35 @@
   margin-right: 10px;
 } 
 
-.sign:hover{
+.signout{
+  font-weight: bold;
+  color:rgb(182, 226, 230);
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 7px;
+}
+
+.register{
+  font-weight: bold;
+  color:rgb(182, 226, 230);
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 6px;
+}
+
+.signin:hover{
+  letter-spacing: 2px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.signout:hover{
+  letter-spacing: 2px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.register:hover{
   letter-spacing: 2px;
   color: whitesmoke;
   cursor: pointer;

@@ -9,6 +9,7 @@ import Particles from "react-tsparticles";
 import "./App.css";
 
 const app = new Clarifai.App({ apiKey: "310bc6a13f4b44d1a30ce0e62263ce26", apiEndpoint: "https://api.clarifai.com"});
+const deepClone = obj => JSON.parse(JSON.stringify(obj));
 
 class App extends Component{
 
@@ -17,21 +18,51 @@ class App extends Component{
     this.state={
       input : '',
       imageUrl: '',
-      box: {}
+      box: []
     }
   }
 
   calculateFaceLocation = (data) => {
-    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    let result = []
+    let box = []
+    const obj = deepClone(data)
+    console.log("object:;;", obj.outputs[0]);
+    obj.outputs[0].data.regions.map((robo, i) => {
+      const data2 = robo.region_info.bounding_box;
+      console.log("-----");
+      console.log(data2);
+      result.push(data2)
+    })
+      
+    // if (Array.isArray(data)){
+     
+    // }
+    console.log("/////////");
+    console.log(result);
+    console.log("/////////");
+    // const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
     const width = Number(image.width);
     const height = Number(image.height);
-    return{
-      leftCol : clarifaiFace.left_col * width,
-      topRow : clarifaiFace.top_row * height,
-      rightCol : width - (clarifaiFace.right_col * width),
-      bottomRow : height - (clarifaiFace.bottom_row * height)
-    }
+    result.forEach((item) => {
+      console.log("item its here ::",item);
+      box.push({
+      leftCol : item.left_col * width,
+      topRow : item.top_row * height,
+      rightCol : width - (item.right_col * width),
+      bottomRow : height - (item.bottom_row * height)
+    })
+    console.log("im box in forEach : ",this.state.box);
+    console.log("box foreach" , box);
+    
+  })
+  return box;
+    // return{
+    //   leftCol : clarifaiFace.left_col * width,
+    //   topRow : clarifaiFace.top_row * height,
+    //   rightCol : width - (clarifaiFace.right_col * width),
+    //   bottomRow : height - (clarifaiFace.bottom_row * height)
+    // }
   } 
 
   displayFaceBox = (box) => {
@@ -55,6 +86,7 @@ class App extends Component{
   }
   
   render(){
+    console.log("hiii its your new box : ",this.state.box);
     console.log("box is here",this.state.box);
     const particlesInit = (main) => {
       console.log(main);

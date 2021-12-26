@@ -22,9 +22,11 @@ button:hover{
  background-color:  #1b0f86;
  color: whitesmoke;
  border: none;
+ position: relative;
 }
 
 .biginput{
+  position: relative;
   display: flex;
   background-color: #a1dddd;
   background-color: #e5e5f7;
@@ -41,11 +43,13 @@ button:hover{
 }
 
 .imageinfoget{
+  position: relative;
   justify-content: center;
   align-items: center;
   
 }
 .App{
+  position: relative;
   justify-content: center;
   align-items: center;
 }

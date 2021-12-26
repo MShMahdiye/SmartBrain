@@ -11,7 +11,7 @@ import "./App.css";
 const app = new Clarifai.App({ apiKey: "310bc6a13f4b44d1a30ce0e62263ce26", apiEndpoint: "https://api.clarifai.com"});
 
 class App extends Component{
-// 310bc6a13f4b44d1a30ce0e62263ce26  
+
   constructor(){
     super();
     this.state={
@@ -55,6 +55,7 @@ class App extends Component{
   }
   
   render(){
+    console.log("box is here",this.state.box);
     const particlesInit = (main) => {
       console.log(main);
   
